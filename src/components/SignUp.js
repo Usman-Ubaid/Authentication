@@ -16,16 +16,22 @@ const SignUp = () => {
   const [password, setPassword] = useState({ value: "", isTouched: false });
 
   const handleChange = (e) => {
-    if (e.target.name === "firstName") {
-      setFirstName(e.target.value);
-    } else if (e.target.name === "lastName") {
-      setLastName(e.target.value);
-    } else if (e.target.name === "email") {
-      setEmail(e.target.value);
-    } else if (e.target.name === "password") {
-      setPassword({ ...password, value: e.target.value });
-    } else {
-      console.log("nothing"); // fix this
+    switch (e.target.name) {
+      case "firstName":
+        setFirstName(e.target.value);
+        break;
+      case "lastName":
+        setLastName(e.target.value);
+        break;
+      case "email":
+        setEmail(e.target.value);
+        break;
+      case "password":
+        setPassword({ ...password, value: e.target.value });
+        break;
+      default:
+        console.log(e.target.value);
+        break;
     }
   };
 
