@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { validateEmail } from "../utilis/validateEmail";
+import { validateEmail } from "../utils/validateEmail";
+import LabelledInput from "./LabelledInput";
 
 const PasswordErrorMessage = () => {
   return (
@@ -59,17 +60,67 @@ const SignUp = () => {
     setPassword({ value: "", isTouched: false });
   };
 
-  const lableStyle = "flex flex-col mx-4 my-8 font-semibold";
-
-  const inputStyle =
-    "border-slate-400 border-2 p-1 mt-1 font-normal rounded-md";
-
   return (
     <form onSubmit={handleSubmit} className="flex items-center justify-center">
       <fieldset className="w-1/4 bg-white shadow shadow-slate-500 rounded-lg h-full">
         <h2 className="text-3xl font-bold text-center py-4 ">Sign Up</h2>
 
-        <label className={lableStyle}>
+        <LabelledInput
+          labelName="First Name"
+          name="firstName"
+          type="text"
+          placeholder="Enter First Name"
+          value={firstName}
+          onChange={handleChange}
+        />
+        <LabelledInput
+          labelName="Last Name"
+          name="lastName"
+          type="text"
+          placeholder="Enter Last Name"
+          value={lastName}
+          onChange={handleChange}
+        />
+        <LabelledInput
+          labelName="Email "
+          name="email"
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={handleChange}
+        />
+        <LabelledInput
+          labelName="Password"
+          name="password"
+          type="password"
+          placeholder="Enter Password"
+          value={password.value}
+          onChange={handleChange}
+          onBlur={(e) => setPassword({ ...password, isTouched: true })}
+        />
+        {password.isTouched && password.value.length < 8 ? (
+          <PasswordErrorMessage />
+        ) : null}
+
+        <button
+          type="submit"
+          disabled={!formValidity()}
+          className={
+            !formValidity()
+              ? "bg-slate-300 py-2 px-4 m-4 rounded-md"
+              : "bg-cyan-600 py-2 px-4 m-4 rounded-md"
+          }
+        >
+          Sign Up
+        </button>
+      </fieldset>
+    </form>
+  );
+};
+
+export default SignUp;
+
+/* <label className={lableStyle}>
           First Name
           <input
             className={inputStyle}
@@ -115,22 +166,4 @@ const SignUp = () => {
           {password.isTouched && password.value.length < 8 ? (
             <PasswordErrorMessage />
           ) : null}
-        </label>
-
-        <button
-          type="submit"
-          disabled={!formValidity()}
-          className={
-            !formValidity()
-              ? "bg-slate-300 py-2 px-4 m-4 rounded-md"
-              : "bg-cyan-600 py-2 px-4 m-4 rounded-md"
-          }
-        >
-          Sign Up
-        </button>
-      </fieldset>
-    </form>
-  );
-};
-
-export default SignUp;
+        </label> */
