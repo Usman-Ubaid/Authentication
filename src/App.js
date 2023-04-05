@@ -1,14 +1,16 @@
 import { Routes, Route } from "react-router";
 import "./App.css";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
-    <div className="h-screen flex flex-col justify-center ">
+    <div>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/dash" element={<Dashboard />} />
       </Routes>
     </div>
   );
