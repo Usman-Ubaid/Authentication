@@ -6,7 +6,7 @@ This frontend project contains login and signup pages developed for the purpose 
 
 1. React
 2. JavaScript
-3. Plain CSS
+3. TailwindCSS
 
 ## Running Project
 
